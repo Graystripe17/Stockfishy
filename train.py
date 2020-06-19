@@ -12,7 +12,10 @@ for fn in os.listdir("data"):
         value = {"1/2-1/2": 0, "0-1": -1, "1-0": 1}
         for i, move in enumerate(game.mainline_moves()):
             board.push(move)
-        print(value[result], State(board).serialize())
+            ser = State(board).
+        print(value[result])
         if game is None:
             break
+        for epoch in range(100):
+            
     exit(0)
