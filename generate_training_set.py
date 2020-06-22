@@ -11,7 +11,10 @@ def get_dataset(num_samples=None):
     for fn in os.listdir("data"):
         pgn = open(os.path.join("data", fn))
         while True:
-            game = chess.pgn.read_game(pgn)
+            try:
+                game = chess.pgn.read_game(pgn)
+            except:
+                continue
             result = game.headers["Result"]
             board = game.board()
             for i, move in enumerate(game.mainline_moves()):
@@ -28,5 +31,5 @@ def get_dataset(num_samples=None):
     return X, Y
 
 if __name__ == "__main__":
-    X, Y = get_dataset(5000)
+    X, Y = get_dataset()
     np.savez("processed/dataset.npz", X, Y)
